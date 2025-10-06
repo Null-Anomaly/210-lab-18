@@ -1,3 +1,6 @@
+/*Comsc 210 | Lab 18 | Lawrence Bryant
+IDE used: Visual Studio Code*/
+
 #include <iostream>
 using namespace std;
 
@@ -102,6 +105,9 @@ int main()
     return 0;
 }
 
+//Function that adds a new node to the head.
+//Takes head pointer by reference for reasons I cannot yet fully grasp
+//And a float + string.
 void addToHead(Node *&hd, float val, string com) 
 {
     Node *newNode = new Node;
@@ -111,6 +117,7 @@ void addToHead(Node *&hd, float val, string com)
     hd = newNode;
 }
 
+//Function that adds a new node to the tail.
 void addToTail(Node *&hd, float val, string com)
 {
     Node *newNode = new Node;
@@ -118,7 +125,7 @@ void addToTail(Node *&hd, float val, string com)
     newNode->review = com;
     newNode->next = nullptr;
 
-    if(hd = nullptr)
+    if(hd == nullptr)
     {
         hd = newNode;
     }
