@@ -9,8 +9,8 @@ struct Node {
 };
 
 //Function prototypes
-void addToHead(Node *, float, string);
-void addToTail(Node *, float, string);
+void addToHead(Node *&, float, string);
+void addToTail(Node *&, float, string);
     
 //Main function
 int main() 
@@ -42,6 +42,14 @@ int main()
         {
             cout << "Enter review rating 0-5: \n";
             cin >> rating;
+            
+            //Input validation for rating
+            while(rating < 0 || rating > 5)
+            {
+                cout << "Please enter a rating between 0 and 5.\n";
+                cin >> rating;
+            }
+
             cout << "Enter review comment: \n";
             cin >> comment;
             addToHead(head, rating, comment);
@@ -61,6 +69,13 @@ int main()
         {
             cout << "Enter review rating 0-5: \n";
             cin >> rating;
+
+            //Input validation for rating
+            while(rating < 0 || rating > 5)
+            {
+                cout << "Please enter a rating between 0 and 5.\n";
+                cin >> rating;
+            }
             cout << "Enter review comment: \n";
             cin >> comment;
             addToTail(head, rating, comment);
@@ -87,29 +102,29 @@ int main()
     return 0;
 }
 
-void addToHead(Node *head, float val, string com) 
+void addToHead(Node *&hd, float val, string com) 
 {
     Node *newNode = new Node;
     newNode->value = val;
     newNode->review = com;
-    newNode->next = head;
-    head = newNode;
+    newNode->next = hd;
+    hd = newNode;
 }
 
-void addToTail(Node *head, float val, string com)
+void addToTail(Node *&hd, float val, string com)
 {
     Node *newNode = new Node;
     newNode->value = val;
     newNode->review = com;
     newNode->next = nullptr;
 
-    if(head = nullptr)
+    if(hd = nullptr)
     {
-        head = newNode;
+        hd = newNode;
     }
     else
     {
-        Node *temp = head;
+        Node *temp = hd;
         while(temp->next != nullptr)
         {
             temp = temp->next;
